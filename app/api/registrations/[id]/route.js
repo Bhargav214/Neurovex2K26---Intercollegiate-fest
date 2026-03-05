@@ -1,0 +1,34 @@
+// app/api/registrations/[id]/route.js
+import { NextResponse } from "next/server";
+import { updateRegistrationStatus, deleteRegistration } from "@/lib/sheets";
+import { verifyAdminToken, unauthorizedResponse } from "@/lib/auth";
+
+export async function PATCH(request, { params }) {
+    const admin = await verifyAdminToken(request);
+    if (!admin) return unauthorizedResponse();
+
+    try {
+        const { status } = await request.json();
+        if (!status) {
+            return NextResponse.json({ error: "Status is required." }, { status: 400 });
+        }
+        await updateRegistrationStatus(params.id, status);
+        return NextResponse.json({ success: true });
+    } catch (error) {
+        console.error("Error updating registration:", error);
+        return NextResponse.json({ error: "Failed to update registration." }, { status: 500 });
+    }
+}
+
+export async function DELETE(request, { params }) {
+    const admin = await verifyAdminToken(request);
+    if (!admin) return unauthorizedResponse();
+
+    try {
+        await deleteRegistration(params.id);
+        return NextResponse.json({ success: true });
+    } catch (error) {
+        console.error("Error deleting registration:", error);
+        return NextResponse.json({ error: "Failed to delete registration." }, { status: 500 });
+    }
+}
