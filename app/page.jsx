@@ -3,7 +3,7 @@ import EventCard from "@/components/EventCard";
 import Link from "next/link";
 import { events } from "@/data/events";
 
-const FEST_DATE = process.env.NEXT_PUBLIC_FEST_DATE || "2026-03-20T09:00:00+05:30";
+const FEST_DATE = process.env.NEXT_PUBLIC_FEST_DATE || "2026-03-17T09:00:00+05:30";
 
 export const metadata = {
   title: "NEUROVEX 2K26 – Intercollegiate IT Fest",
@@ -42,7 +42,7 @@ export default function HomePage() {
               <span className="hero-meta-icon">📅</span>
               <div>
                 <div className="hero-meta-label">Date</div>
-                <div className="hero-meta-value">March 20, 2026</div>
+                <div className="hero-meta-value">March 17, 2026</div>
               </div>
             </div>
             <div className="hero-meta-item">
@@ -56,7 +56,7 @@ export default function HomePage() {
               <span className="hero-meta-icon">📍</span>
               <div>
                 <div className="hero-meta-label">Venue</div>
-                <div className="hero-meta-value">Your College, City</div>
+                <div className="hero-meta-value">Seshadripuram First Grade College, Yelahanka</div>
               </div>
             </div>
           </div>
@@ -109,11 +109,11 @@ export default function HomePage() {
                 <div className="about-stat-label">Participants</div>
               </div>
               <div className="about-stat">
-                <div className="about-stat-value">20+</div>
+                <div className="about-stat-value">50+</div>
                 <div className="about-stat-label">Colleges</div>
               </div>
               <div className="about-stat">
-                <div className="about-stat-value">₹25K+</div>
+                <div className="about-stat-value">₹4K+</div>
                 <div className="about-stat-label">Prize Pool</div>
               </div>
             </div>

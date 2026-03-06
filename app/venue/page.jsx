@@ -22,12 +22,12 @@ export default function VenuePage() {
 
                             {[
                                 { icon: "🏛️", label: "Venue Name", value: "Main Auditorium & IT Labs" },
-                                { icon: "🏫", label: "College", value: "Your College Name Here" },
+                                { icon: "🏫", label: "College", value: "Seshadripuram First Grade College" },
                                 {
                                     icon: "🗺️", label: "Address",
-                                    value: "College Campus, Main Road, City Name – 600 000, Tamil Nadu, India"
+                                    value: "SFGC Campus, No.26,Yelahanka New town, Bengaluru – 560064, Karnataka, India"
                                 },
-                                { icon: "📅", label: "Date & Time", value: "March 20, 2026 · 9:00 AM – 5:00 PM" },
+                                { icon: "📅", label: "Date & Time", value: "March 17, 2026 · 9:00 AM – 5:00 PM" },
                             ].map((d) => (
                                 <div key={d.label} className="venue-detail-row">
                                     <div className="venue-detail-icon">{d.icon}</div>
@@ -40,7 +40,7 @@ export default function VenuePage() {
 
                             <div className="venue-cta-row">
                                 <a
-                                    href="https://maps.google.com/?q=Your+College+Name+City"
+                                    href="https://maps.app.goo.gl/sE8cVANAqR5yBfRB6"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="btn btn-primary"
@@ -63,7 +63,7 @@ export default function VenuePage() {
                             {[
                                 { icon: "🚌", title: "By Bus", desc: "State transport buses route from City Bus Stand. Alight at College Main Gate." },
                                 { icon: "🚂", title: "By Train", desc: "Nearest: City Railway Station (5 km). Auto/taxi available outside." },
-                                { icon: "📱", title: "Cab Services", desc: 'Ola/Uber available. Search "Your College Name" as destination.' },
+                                { icon: "📱", title: "Cab Services", desc: 'Ola/Uber available. Search "Seshadripuram First Grade College" as destination.' },
                                 { icon: "🅿️", title: "Parking", desc: "Free parking inside campus. Enter via Main Gate." },
                             ].map((t) => (
                                 <div key={t.title} className="transport-row">

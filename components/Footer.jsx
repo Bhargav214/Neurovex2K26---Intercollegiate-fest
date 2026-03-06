@@ -27,7 +27,7 @@ export default function Footer() {
       <div className="footer-bottom-wrap">
         <div className="footer-divider-line" />
         <div className="footer-bottom">
-          <span>© {year} NEUROVEX 2K26. Department of MCA.</span>
+          <span>© {year} NEUROVEX 2K26. BSP Codes.</span>
           <span>Powered by Innovation ⚡</span>
         </div>
       </div>

@@ -1,5 +1,5 @@
 export default function WinnerCard({ winner }) {
-  const medals = { "1st": "🥇", "2nd": "🥈", "3rd": "🥉" };
+  const medals = { "1st": "🥇", "2nd": "🥈" };
   const medal = medals[winner.position] || "🏆";
   const posNum = winner.position.replace("st", "").replace("nd", "").replace("rd", "");
 

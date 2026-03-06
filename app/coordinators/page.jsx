@@ -4,16 +4,13 @@ export const metadata = {
 };
 
 const coordinators = [
-    { name: "Dr. S. Rajesh Kumar", role: "Faculty Coordinator", department: "Head of Department, MCA", phone: "+91 98XXX XXXXX", email: "hod.mca@college.edu" },
-    { name: "Prof. Anitha Krishnan", role: "Faculty In-charge", department: "Dept. of MCA", phone: "+91 87XXX XXXXX", email: "anitha.k@college.edu" },
-    { name: "Aravind Kumar", role: "Student Coordinator", department: "Coding & Debugging", phone: "+91 98XXX XXXXX", email: "aravind.coordinator@gmail.com" },
-    { name: "Divya Menon", role: "Student Coordinator", department: "IT Quiz", phone: "+91 99XXX XXXXX", email: "divya.coord@gmail.com" },
-    { name: "Sneha Pillai", role: "Student Coordinator", department: "Treasure Hunt", phone: "+91 97XXX XXXXX", email: "sneha.coord@gmail.com" },
-    { name: "Vishnu Suresh", role: "Student Coordinator", department: "IT Gaming", phone: "+91 95XXX XXXXX", email: "vishnu.coord@gmail.com" },
-    { name: "Meera Gopinath", role: "Student Coordinator", department: "Logo Design", phone: "+91 96XXX XXXXX", email: "meera.coord@gmail.com" },
-    { name: "Sooraj Babu", role: "Student Coordinator", department: "IT Manager", phone: "+91 94XXX XXXXX", email: "sooraj.coord@gmail.com" },
-    { name: "Nithya Krishnan", role: "Student Coordinator", department: "Corporate Walk", phone: "+91 93XXX XXXXX", email: "nithya.coord@gmail.com" },
-    { name: "Aishwarya Pillai", role: "Student Coordinator", department: "IT Debate", phone: "+91 92XXX XXXXX", email: "aishwarya.coord@gmail.com" },
+    { name: "Prof.Rekha Raichel", role: "Faculty Coordinator", department: "Head of Department, MCA", phone: "+91 9986344574" },
+    { name: "Prof.Thimmappa N.T", role: "Faculty In-charge", department: "Dept. of MCA", phone: "+91 7899999042" },
+    { name: "Satya Simha H N", role: "Organizer", phone: "6360582689" },
+    { name: "Sujith Kumar", role: "Organizer", phone: "8431576586" },
+    { name: "Bhargav Sai P", role: "Organizer", phone: "8618252933" },
+    { name: "Saajan D", role: "Organizer", phone: "8904712928" },
+    { name: "Syed Ayan", role: "Organizer", phone: "9353027996" },
 ];
 
 function CoordCard({ c }) {

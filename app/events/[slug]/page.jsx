@@ -47,6 +47,17 @@ export default async function EventDetailPage({ params }) {
             <ul className="event-rules-list">
               {event.rules.map((r, i) => <li key={i}>{r}</li>)}
             </ul>
+            {event.rulespdf && (
+              <a
+                href={event.rulespdf}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-secondary"
+                style={{ marginTop: "16px", display: "inline-flex", alignItems: "center", gap: "8px" }}
+              >
+                📄 Download Rules PDF
+              </a>
+            )}
           </div>
 
           <div className="glass-card event-detail-card">
@@ -92,7 +103,6 @@ export default async function EventDetailPage({ params }) {
             <h2 className="event-detail-section-title">🏆 Prizes</h2>
             <div className="prize-row prize-gold"><span>🥇 1st Place</span><span>{event.prizes.first}</span></div>
             <div className="prize-row prize-silver"><span>🥈 2nd Place</span><span>{event.prizes.second}</span></div>
-            <div className="prize-row prize-bronze"><span>🥉 3rd Place</span><span>{event.prizes.third}</span></div>
           </div>
 
           <div className="glass-card event-detail-card">
