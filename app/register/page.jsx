@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { events } from "@/data/events";
 
 export default function RegisterPage() {
@@ -12,11 +12,35 @@ export default function RegisterPage() {
         teamSize: "",
         notes: "",
     });
+    const [teamMembers, setTeamMembers] = useState([]);
     const [status, setStatus] = useState("idle"); // idle | loading | success | error
     const [message, setMessage] = useState("");
 
+    // Sync teamMembers array length with teamSize (extra members beyond member 1)
+    useEffect(() => {
+        const size = parseInt(form.teamSize, 10);
+        if (!isNaN(size) && size > 1) {
+            setTeamMembers((prev) => {
+                const extra = size - 1; // member 1 is the registrant
+                const updated = [...prev];
+                while (updated.length < extra) updated.push("");
+                return updated.slice(0, extra);
+            });
+        } else {
+            setTeamMembers([]);
+        }
+    }, [form.teamSize]);
+
     const handleChange = (e) => {
         setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    };
+
+    const handleMemberChange = (index, value) => {
+        setTeamMembers((prev) => {
+            const updated = [...prev];
+            updated[index] = value;
+            return updated;
+        });
     };
 
     const handleSubmit = async (e) => {
@@ -25,10 +49,15 @@ export default function RegisterPage() {
         setMessage("");
 
         try {
+            const payload = {
+                ...form,
+                teamMembers: teamMembers.filter(Boolean),
+            };
+
             const res = await fetch("/api/register", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(form),
+                body: JSON.stringify(payload),
             });
             const data = await res.json();
 
@@ -37,8 +66,9 @@ export default function RegisterPage() {
                 setMessage(data.error || "Registration failed. Please try again.");
             } else {
                 setStatus("success");
-                setMessage("🎉 Registration successful! You're all set for NEUROVEX 2K26. Check your email for confirmation.");
+                setMessage("🎉 Registration successful! You're all set for NEUROVEX 2K26.");
                 setForm({ name: "", college: "", phone: "", email: "", event: "", teamSize: "", notes: "" });
+                setTeamMembers([]);
             }
         } catch {
             setStatus("error");
@@ -47,15 +77,17 @@ export default function RegisterPage() {
     };
 
     const selectedEvent = events.find((e) => e.slug === form.event);
+    const teamSize = parseInt(form.teamSize, 10);
+    const showTeamMembers = !isNaN(teamSize) && teamSize > 1;
 
     return (
         <div>
             <div className="page-header">
-                <div className="reg-badge">Free Registration</div>
+                <div className="reg-badge">Registration</div>
                 <h1>
                     Register for <span style={{ color: "var(--accent)", textShadow: "0 0 20px var(--accent)" }}>NEUROVEX 2K26</span>
                 </h1>
-                <p>Fill in the details below to secure your spot. No registration fee required.</p>
+                <p>Fill in the details below to secure your spot.</p>
             </div>
 
             <div className="section" style={{ paddingTop: 0, maxWidth: "720px" }}>
@@ -81,6 +113,7 @@ export default function RegisterPage() {
                         )}
 
                         <form onSubmit={handleSubmit}>
+                            {/* Row 1: Name + College */}
                             <div className="form-row">
                                 <div className="form-group">
                                     <label className="form-label" htmlFor="name">Full Name *</label>
@@ -110,6 +143,7 @@ export default function RegisterPage() {
                                 </div>
                             </div>
 
+                            {/* Row 2: Phone + Email */}
                             <div className="form-row">
                                 <div className="form-group">
                                     <label className="form-label" htmlFor="phone">Phone Number *</label>
@@ -140,6 +174,7 @@ export default function RegisterPage() {
                                 </div>
                             </div>
 
+                            {/* Row 3: Event + Team Size */}
                             <div className="form-row">
                                 <div className="form-group">
                                     <label className="form-label" htmlFor="event">Select Event *</label>
@@ -181,7 +216,55 @@ export default function RegisterPage() {
                                     <span className="event-hint-icon">{selectedEvent.icon}</span>
                                     <div>
                                         <strong>{selectedEvent.title}</strong> — {selectedEvent.teamSize}
+                                        {selectedEvent.entryFee && (
+                                            <span className="event-hint-fee">💰 Entry Fee: {selectedEvent.entryFee}</span>
+                                        )}
                                     </div>
+                                </div>
+                            )}
+
+                            {/* ── Team Members Section ── */}
+                            {showTeamMembers && (
+                                <div className="team-members-section">
+                                    <div className="team-members-header">
+                                        <span className="team-members-icon">👥</span>
+                                        <div>
+                                            <h3 className="team-members-title">Team Members</h3>
+                                            <p className="team-members-subtitle">
+                                                Enter the full names of all team members (excluding yourself as Member 1)
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    {/* Member 1 = registrant (read-only display) */}
+                                    <div className="member-row">
+                                        <span className="member-badge">Member 1</span>
+                                        <div className="member-input-wrapper">
+                                            <input
+                                                type="text"
+                                                className="form-input member-input member-input-readonly"
+                                                value={form.name || "You (registrant)"}
+                                                readOnly
+                                                tabIndex={-1}
+                                            />
+                                            <span className="member-you-tag">You</span>
+                                        </div>
+                                    </div>
+
+                                    {/* Members 2..N */}
+                                    {teamMembers.map((member, i) => (
+                                        <div className="member-row" key={i}>
+                                            <span className="member-badge">Member {i + 2}</span>
+                                            <input
+                                                type="text"
+                                                className="form-input member-input"
+                                                placeholder={`Full name of Member ${i + 2}`}
+                                                value={member}
+                                                onChange={(e) => handleMemberChange(i, e.target.value)}
+                                                required
+                                            />
+                                        </div>
+                                    ))}
                                 </div>
                             )}
 
@@ -269,6 +352,112 @@ export default function RegisterPage() {
 
         .event-hint strong { color: #fff; }
 
+        .event-hint-fee {
+          display: block;
+          font-size: 0.78rem;
+          color: #34d399;
+          margin-top: 3px;
+          font-weight: 600;
+        }
+
+        /* ── Team Members ── */
+        .team-members-section {
+          background: rgba(0, 212, 255, 0.04);
+          border: 1px solid rgba(0, 212, 255, 0.18);
+          border-radius: 12px;
+          padding: 20px;
+          margin-bottom: 20px;
+          animation: fadeSlideIn 0.3s ease;
+        }
+
+        @keyframes fadeSlideIn {
+          from { opacity: 0; transform: translateY(-8px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .team-members-header {
+          display: flex;
+          align-items: flex-start;
+          gap: 12px;
+          margin-bottom: 18px;
+          padding-bottom: 14px;
+          border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+        }
+
+        .team-members-icon { font-size: 1.5rem; line-height: 1; margin-top: 2px; }
+
+        .team-members-title {
+          font-family: var(--font-heading);
+          font-size: 0.9rem;
+          font-weight: 700;
+          color: var(--accent);
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          margin: 0 0 4px;
+        }
+
+        .team-members-subtitle {
+          font-size: 0.8rem;
+          color: var(--text-secondary);
+          margin: 0;
+          line-height: 1.5;
+        }
+
+        .member-row {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 10px;
+        }
+
+        .member-row:last-child { margin-bottom: 0; }
+
+        .member-badge {
+          flex-shrink: 0;
+          min-width: 76px;
+          padding: 4px 10px;
+          background: rgba(0, 212, 255, 0.1);
+          border: 1px solid rgba(0, 212, 255, 0.25);
+          border-radius: 6px;
+          font-size: 0.72rem;
+          font-weight: 700;
+          color: var(--accent);
+          letter-spacing: 0.04em;
+          font-family: var(--font-heading);
+          text-align: center;
+          text-transform: uppercase;
+        }
+
+        .member-input-wrapper {
+          position: relative;
+          flex: 1;
+        }
+
+        .member-input { flex: 1; margin-bottom: 0 !important; }
+
+        .member-input-readonly {
+          opacity: 0.55;
+          cursor: default;
+          padding-right: 48px;
+        }
+
+        .member-you-tag {
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 0.68rem;
+          font-weight: 700;
+          color: #34d399;
+          background: rgba(52, 211, 153, 0.12);
+          border: 1px solid rgba(52, 211, 153, 0.3);
+          border-radius: 4px;
+          padding: 2px 7px;
+          letter-spacing: 0.04em;
+          font-family: var(--font-heading);
+          text-transform: uppercase;
+        }
+
         .btn-spinner {
           width: 16px;
           height: 16px;
@@ -305,6 +494,8 @@ export default function RegisterPage() {
         @media (max-width: 600px) {
           .form-row { grid-template-columns: 1fr; }
           .reg-form-card { padding: 24px 20px; }
+          .member-row { flex-wrap: wrap; }
+          .member-badge { min-width: auto; }
         }
       `}</style>
         </div>

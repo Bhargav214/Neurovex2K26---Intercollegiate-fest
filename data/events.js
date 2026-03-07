@@ -12,11 +12,12 @@ export const events = [
         rules: [
             "Participants must use only allowed programming languages (C, C++, Java, Python).",
             "No internet access is permitted during the event.",
-            "Each participant gets one attempt per round.",
+            "Maximum 3 attempts allowed, Incorrect submissions will attract penalty marks.",
             "Plagiarism leads to immediate disqualification.",
             "Time limit per round will be announced on the day.",
         ],
         teamSize: "2 members per team",
+        entryFee: "₹200 per team",
         rounds: [
             { round: "Round 1 – Coding Challenge", description: "Coding MCQ Round." },
             { round: "Round 2 – Debugging", description: "Debugging Round using 'C' language. Fastest correct submission wins." },
@@ -51,6 +52,7 @@ export const events = [
             "Visual rounds will be judged by coordinators.",
         ],
         teamSize: "2 members per team",
+        entryFee: "₹200 per team",
         rounds: [
             { round: "Round 1 – Prelims (Written)", description: "MCQ questions(top scored will be qualified for next round)." },
             { round: "Round 2 – Technical Round", description: "Tech-related questions." },
@@ -78,13 +80,16 @@ export const events = [
         description:
             "An exhilarating campus-wide IT-themed treasure hunt where teams decode tech clues, solve puzzles, and race to find the hidden treasure. Combines teamwork, logical thinking, and technical knowledge.",
         rules: [
-            "Teams of 3 participants.",
+            "Teams of 4 participants.",
             "Clues must not be shared with other teams.",
             "Destroying or hiding clue cards leads to disqualification.",
             "All team members must be present at the final location.",
             "Coordinators' decision on clue interpretation is final.",
+            "Teams caught cheating, breaking rules, or misbehaving and arguing with the coordinators, volunteers leads to immediate disqualification.",
+            "The organizer's decision will be final in any dispute.",
         ],
-        teamSize: "3 members per team",
+        teamSize: "4 members per team",
+        entryFee: "₹400 per team",
         rounds: [
             { round: "Stage 1 – Preliminary Round", description: "Solve physical and digital puzzles scattered across the campus." },
             { round: "Stage 2 – Challenge Round", description: "Challenge tasks for selected teams. " },
@@ -100,7 +105,7 @@ export const events = [
             second: "₹1,000 + Certificates for all members",
         },
         coordinators: [
-            { name: "Prathima Yadav", phone: "+91 8792461754", role: "Hunt Coordinator" },
+            { name: "Nithyashree R D", phone: "+91 8431399418", role: "Hunt Coordinator" },
         ],
     },
     {
@@ -116,14 +121,15 @@ export const events = [
             "Screen peeking = Instant violation lead to disqualification.",
             "Toxic behaviour, Arguing or Abuse will lead to immediate disqalification.",
             "Disrespecting coordinators or volunteers will lead to disqualification.",
-            "Joining the official Discord server is compulsory for all players.",
-            "No character skills or no gun attributes.",
+            "Sharing your screen is compulsory.",
+            "First 2 Rounds Character Skills✅,Gun Attributes ❎and in Final Round Character Skills❎,Gun Attributes ❎",
             "Hacking or cheat software leads to permanent disqualification.",
             "No internet/charging sockets will be provided by the college.",
             "Every single player level should be above 35.",
             "Note: For detailed game structure, see the Rules PDF below."
         ],
         teamSize: "4 members per team",
+        entryFee: "₹400 per team",
         rounds: [
             { round: "Round 1 – Qualification Round" },
             { round: "Round 2 – Semi Final" },
@@ -141,7 +147,7 @@ export const events = [
         rulespdf: "https://drive.google.com/file/d/1nBsOOubRa1twezLJlkNyD15gFS-epQb8/view?usp=sharing",// Paste the PDF URL here, e.g. "/pdfs/gaming-rules.pdf" or a Google Drive link
         coordinators: [
             { name: "Jamwanth C", phone: "+91 7829740310", role: "Gaming Coordinator" },
-            { name: "Yuvaraj B G", phone: "+91 8296922397", role: "Gaming Coordinator" },
+            { name: "Yuvaraj M G", phone: "+91 8296922397", role: "Gaming Coordinator" },
         ],
     },
     {
@@ -160,6 +166,7 @@ export const events = [
             "Theme and company brief will be given on the day of the event.",
         ],
         teamSize: "Individual (1 person)",
+        entryFee: "₹100 per participant",
         rounds: [
             { round: "Single Round – Live Design", description: "On-spot logo design based on given brief. Judged immediately after." },
         ],
@@ -173,7 +180,6 @@ export const events = [
         ],
         prizes: {
             first: "₹1,000 + Certificate",
-            second: "₹500 + Certificate",
         },
         coordinators: [
             { name: "Lavanya", phone: "+91 8904716029", role: "Design Coordinator" },
@@ -193,11 +199,12 @@ export const events = [
             "External help or internet is not permitted.",
             "Time per round will be specified on event day.",
         ],
-        teamSize: "2 members per team",
+        teamSize: "1 members per team",
+        entryFee: "₹100 per team",
         rounds: [
-            { round: "Round 1 – Mock Interview", description: "To evaluate foundational knowledge and professional communication." },
-            { round: "Round 2 – Group discussion", description: "" },
-            { round: "Round 3 – Problem-solving task", description: "" },
+            { round: "Round 1 – Problem-solving task", description: "Participants will be given a real-world IT project scenario and must propose a solution within the given time limit." },
+            { round: "Round 2 – Group discussion", description: "Teams engage in a group discussion on a given topic." },
+            { round: "Round 3 – Mock Interview", description: "Candidates will participate in a simulated job interview." },
         ],
         judgingCriteria: [
             "Leadership Qualities",
@@ -206,7 +213,6 @@ export const events = [
         ],
         prizes: {
             first: "₹1,500 + Certificate",
-            second: "₹1,000 + Certificate",
         },
         coordinators: [
             { name: "Sathyasimha H N", phone: "+91 6360582689", role: "Event Coordinator" },
@@ -234,6 +240,7 @@ export const events = [
             "Judges' Decision: The decision of the judges and organizing committee will be final and binding in all circumstances.",
         ],
         teamSize: "6–8 members per team",
+        entryFee: "₹400 per team",
         rounds: [
             { round: "Round 1 – Quiz Round", description: "Tech & IT-themed quiz for the full team. Only one member may answer per question." },
             { round: "Round 2 – Gesture Walk Round", description: "2–3 minute corporate concept presentation and walk judged on relevance, confidence, creativity, and team coordination." },
@@ -246,8 +253,7 @@ export const events = [
             "Team coordination",
         ],
         prizes: {
-            first: "₹2,000 + Certificate",
-            second: "₹1,500 + Certificate",
+            first: "₹1,500 + Certificate",
         },
         coordinators: [
             { name: "Arathi A", phone: "+91 9663091959", role: "Event Host" },
@@ -275,6 +281,7 @@ export const events = [
             "Judges' Decision: The decision of the judges shall be final and binding under all circumstances.",
         ],
         teamSize: "2 members per team",
+        entryFee: "₹200 per team",
         rounds: [
             { round: "Round 1 – Preliminary Debates", description: "Teams argue for/against assigned positions. Top teams advance." },
             { round: "Round 2 – Semi Finals", description: "Head-to-head debate on assigned topic. Each debate is 20 minutes with strict time management." },

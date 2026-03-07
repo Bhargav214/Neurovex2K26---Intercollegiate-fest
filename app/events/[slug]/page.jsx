@@ -89,8 +89,9 @@ export default async function EventDetailPage({ params }) {
             <h2 className="event-detail-section-title">ℹ️ Quick Info</h2>
             {[
               { label: "Team Size", value: event.teamSize },
+              { label: "Entry Fee", value: event.entryFee || "Free" },
               { label: "Rounds", value: String(event.rounds.length) },
-              { label: "Date", value: "March 20, 2026" },
+              { label: "Date", value: "March 17, 2026" },
             ].map((item) => (
               <div key={item.label} className="event-quick-row">
                 <span className="event-quick-label">{item.label}</span>
@@ -102,7 +103,9 @@ export default async function EventDetailPage({ params }) {
           <div className="glass-card event-detail-card">
             <h2 className="event-detail-section-title">🏆 Prizes</h2>
             <div className="prize-row prize-gold"><span>🥇 1st Place</span><span>{event.prizes.first}</span></div>
-            <div className="prize-row prize-silver"><span>🥈 2nd Place</span><span>{event.prizes.second}</span></div>
+            {event.prizes.second && (
+              <div className="prize-row prize-silver"><span>🥈 2nd Place</span><span>{event.prizes.second}</span></div>
+            )}
           </div>
 
           <div className="glass-card event-detail-card">

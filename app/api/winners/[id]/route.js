@@ -8,8 +8,9 @@ export async function PUT(request, { params }) {
     if (!admin) return unauthorizedResponse();
 
     try {
+        const resolvedParams = await params;
         const data = await request.json();
-        await updateWinner(params.id, data);
+        await updateWinner(resolvedParams.id, data);
         return NextResponse.json({ success: true });
     } catch (error) {
         console.error("Error updating winner:", error);
@@ -22,7 +23,8 @@ export async function DELETE(request, { params }) {
     if (!admin) return unauthorizedResponse();
 
     try {
-        await deleteWinner(params.id);
+        const resolvedParams = await params;
+        await deleteWinner(resolvedParams.id);
         return NextResponse.json({ success: true });
     } catch (error) {
         console.error("Error deleting winner:", error);

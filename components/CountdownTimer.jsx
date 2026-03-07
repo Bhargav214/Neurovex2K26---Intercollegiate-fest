@@ -1,76 +1,78 @@
 "use client";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 function pad(n) {
-    return String(n).padStart(2, "0");
+  return String(n).padStart(2, "0");
 }
 
 export default function CountdownTimer({ targetDate }) {
-    const [timeLeft, setTimeLeft] = useState(null);
+  const [timeLeft, setTimeLeft] = useState(null);
 
-    useEffect(() => {
-        const target = new Date(targetDate).getTime();
+  useEffect(() => {
+    const target = new Date(targetDate).getTime();
 
-        const tick = () => {
-            const now = Date.now();
-            const diff = target - now;
+    const tick = () => {
+      const now = Date.now();
+      const diff = target - now;
 
-            if (diff <= 0) {
-                setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-                return;
-            }
+      if (diff <= 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
 
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-            setTimeLeft({ days, hours, minutes, seconds });
-        };
+      setTimeLeft({ days, hours, minutes, seconds });
+    };
 
-        tick();
-        const interval = setInterval(tick, 1000);
-        return () => clearInterval(interval);
-    }, [targetDate]);
+    tick();
+    const interval = setInterval(tick, 1000);
+    return () => clearInterval(interval);
+  }, [targetDate]);
 
-    if (!timeLeft) {
-        return (
-            <div className="countdown">
-                <div className="countdown-loading">Calculating...</div>
-            </div>
-        );
-    }
-
-    const isOver = timeLeft.days === 0 && timeLeft.hours === 0 && timeLeft.minutes === 0 && timeLeft.seconds === 0;
-
-    if (isOver) {
-        return (
-            <div className="countdown">
-                <div className="countdown-over">🎉 The Fest is LIVE!</div>
-            </div>
-        );
-    }
-
-    const units = [
-        { label: "Days", value: pad(timeLeft.days) },
-        { label: "Hours", value: pad(timeLeft.hours) },
-        { label: "Minutes", value: pad(timeLeft.minutes) },
-        { label: "Seconds", value: pad(timeLeft.seconds) },
-    ];
-
+  if (!timeLeft) {
     return (
-        <div className="countdown">
-            {units.map((u, i) => (
-                <div key={u.label} className="countdown-unit">
-                    <div className="countdown-value" aria-label={u.label}>
-                        {u.value}
-                    </div>
-                    <div className="countdown-label">{u.label}</div>
-                    {i < units.length - 1 && <div className="countdown-sep">:</div>}
-                </div>
-            ))}
+      <div className="countdown">
+        <div className="countdown-loading">Calculating...</div>
+      </div>
+    );
+  }
 
-            <style jsx>{`
+  const isOver = timeLeft.days === 0 && timeLeft.hours === 0 && timeLeft.minutes === 0 && timeLeft.seconds === 0;
+
+  if (isOver) {
+    return (
+      <div className="countdown">
+        <div className="countdown-over">🎉 The Fest is LIVE!</div>
+      </div>
+    );
+  }
+
+  const units = [
+    { label: "Days", value: pad(timeLeft.days) },
+    { label: "Hours", value: pad(timeLeft.hours) },
+    { label: "Minutes", value: pad(timeLeft.minutes) },
+    { label: "Seconds", value: pad(timeLeft.seconds) },
+  ];
+
+  return (
+    <div className="countdown">
+      {units.map((u, i) => (
+        <React.Fragment key={u.label}>
+          <div className="countdown-unit">
+            <div className="countdown-value" aria-label={u.label}>
+              {u.value}
+            </div>
+            <div className="countdown-label">{u.label}</div>
+          </div>
+          {i < units.length - 1 && <div className="countdown-sep">:</div>}
+        </React.Fragment>
+      ))}
+
+      <style jsx>{`
         .countdown {
           display: flex;
           align-items: flex-start;
@@ -154,6 +156,6 @@ export default function CountdownTimer({ targetDate }) {
           .countdown-value { min-width: 68px; padding: 12px 4px; }
         }
       `}</style>
-        </div>
-    );
+    </div>
+  );
 }

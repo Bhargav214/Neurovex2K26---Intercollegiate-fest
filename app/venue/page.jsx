@@ -64,7 +64,7 @@ export default function VenuePage() {
                                 { icon: "🚌", title: "By Bus", desc: "State transport buses route from City Bus Stand. Alight at College Main Gate." },
                                 { icon: "🚂", title: "By Train", desc: "Nearest: City Railway Station (5 km). Auto/taxi available outside." },
                                 { icon: "📱", title: "Cab Services", desc: 'Ola/Uber available. Search "Seshadripuram First Grade College" as destination.' },
-                                { icon: "🅿️", title: "Parking", desc: "Free parking inside campus. Enter via Main Gate." },
+                                // { icon: "🅿️", title: "Parking", desc: "Free parking inside campus. Enter via Main Gate." },
                             ].map((t) => (
                                 <div key={t.title} className="transport-row">
                                     <div className="transport-icon">{t.icon}</div>
@@ -84,7 +84,7 @@ export default function VenuePage() {
                         </div>
                         <iframe
                             title="NEUROVEX 2K26 Venue Map"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.938!2d80.2280!3d13.0475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDAyJzUxLjAiTiA4MMKwMTMnNDAuOCJF!5e0!3m2!1sen!2sin!4v1000000000000!5m2!1sen!2sin"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.9910358653424!2d77.5851928748437!3d13.099754287227515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1887b21c3b05%3A0x3caae03cb8a3c156!2sSeshadripuram%20First%20Grade%20College!5e0!3m2!1sen!2sin!4v1772899368139!5m2!1sen!2sin"
                             className="venue-iframe"
                             allowFullScreen=""
                             loading="lazy"

@@ -6,7 +6,8 @@ export const metadata = {
 const coordinators = [
     { name: "Prof.Rekha Raichel", role: "Faculty Coordinator", department: "Head of Department, MCA", phone: "+91 9986344574" },
     { name: "Prof.Thimmappa N.T", role: "Faculty In-charge", department: "Dept. of MCA", phone: "+91 7899999042" },
-    { name: "Satya Simha H N", role: "Organizer", phone: "6360582689" },
+    { name: "Prof.Chirag D", role: "Faculty In-charge", department: "Dept. of MCA", phone: "+91 8310228857" },
+    { name: "Sathyasimha H N", role: "Organizer", phone: "6360582689" },
     { name: "Sujith Kumar", role: "Organizer", phone: "8431576586" },
     { name: "Bhargav Sai P", role: "Organizer", phone: "8618252933" },
     { name: "Saajan D", role: "Organizer", phone: "8904712928" },
@@ -27,7 +28,7 @@ function CoordCard({ c }) {
                 <div className="coord-contact-row">
                     <a href={`tel:${c.phone}`} className="coord-contact-btn coord-call">{c.phone}</a>
                     <a href={`https://wa.me/${c.phone.replace(/\D/g, "")}`} target="_blank" rel="noopener noreferrer" className="coord-contact-btn coord-wa">💬 WhatsApp</a>
-                    <a href={`mailto:${c.email}`} className="coord-contact-btn coord-mail">✉️ Email</a>
+                    {/* <a href={`mailto:${c.email}`} className="coord-contact-btn coord-mail">✉️ Email</a> */}
                 </div>
             </div>
         </div>

@@ -8,11 +8,12 @@ export async function PATCH(request, { params }) {
     if (!admin) return unauthorizedResponse();
 
     try {
+        const resolvedParams = await params;
         const { status } = await request.json();
         if (!status) {
             return NextResponse.json({ error: "Status is required." }, { status: 400 });
         }
-        await updateRegistrationStatus(params.id, status);
+        await updateRegistrationStatus(resolvedParams.id, status);
         return NextResponse.json({ success: true });
     } catch (error) {
         console.error("Error updating registration:", error);
@@ -25,7 +26,8 @@ export async function DELETE(request, { params }) {
     if (!admin) return unauthorizedResponse();
 
     try {
-        await deleteRegistration(params.id);
+        const resolvedParams = await params;
+        await deleteRegistration(resolvedParams.id);
         return NextResponse.json({ success: true });
     } catch (error) {
         console.error("Error deleting registration:", error);

@@ -65,7 +65,7 @@ export default async function WinnersPage() {
                                 <div className="winners-cards-grid">
                                     {grouped[eventName]
                                         .sort((a, b) => {
-                                            const order = { "1st": 1, "2nd": 2, "3rd": 3 };
+                                            const order = { "1st": 1, "2nd": 2 };
                                             return (order[a.position] || 99) - (order[b.position] || 99);
                                         })
                                         .map((winner) => (

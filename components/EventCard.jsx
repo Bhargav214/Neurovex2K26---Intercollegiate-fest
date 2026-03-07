@@ -12,6 +12,9 @@ export default function EventCard({ event }) {
                 </p>
                 <div className="event-card-footer">
                     <span className="badge badge-accent">{event.teamSize.split(" ")[0]}</span>
+                    {event.entryFee && (
+                        <span className="badge badge-fee">💰 {event.entryFee}</span>
+                    )}
                     <span className="event-card-cta">View Details →</span>
                 </div>
             </div>

@@ -348,7 +348,6 @@ export default function AdminDashboard() {
                                             <option value="">Select Position</option>
                                             <option value="1st">🥇 1st Place</option>
                                             <option value="2nd">🥈 2nd Place</option>
-                                            <option value="3rd">🥉 3rd Place</option>
                                         </select>
                                     </div>
                                     <div className="form-group">
@@ -415,8 +414,8 @@ export default function AdminDashboard() {
                                                         <span className="badge badge-accent" style={{ fontSize: "0.7rem" }}>{w.event}</span>
                                                     </td>
                                                     <td>
-                                                        <span className={`badge ${w.position === "1st" ? "badge-gold" : w.position === "2nd" ? "badge-silver" : "badge-bronze"}`}>
-                                                            {w.position === "1st" ? "🥇" : w.position === "2nd" ? "🥈" : "🥉"} {w.position}
+                                                        <span className={`badge ${w.position === "1st" ? "badge-gold" : "badge-silver"}`}>
+                                                            {w.position === "1st" ? "🥇" : "🥈"} {w.position}
                                                         </span>
                                                     </td>
                                                     <td style={{ fontWeight: 600, color: "#fff" }}>{w.participantName}</td>
