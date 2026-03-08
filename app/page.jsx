@@ -167,7 +167,7 @@ export default function HomePage() {
             Registrations are open! Secure your spot at NEUROVEX 2K26 before
             seats fill up.
             <br /><br />
-            <strong>Note:</strong> On-spot registration is available!.
+            <strong>Note:</strong> On-spot registration is available.
           </p>
           <Link href="/register" className="btn btn-primary">
             ⚡ Register Now
