@@ -98,6 +98,9 @@ export default async function EventDetailPage({ params }) {
                 <span className="event-quick-value">{item.value}</span>
               </div>
             ))}
+            <div style={{ marginTop: "16px", padding: "12px", background: "rgba(0, 212, 255, 0.06)", borderRadius: "8px", border: "1px solid rgba(0, 212, 255, 0.2)", fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: "1.5" }}>
+              <strong style={{ color: "var(--accent)" }}>Note:</strong> On-spot registration is available. Amount collected offline.
+            </div>
           </div>
 
           <div className="glass-card event-detail-card">

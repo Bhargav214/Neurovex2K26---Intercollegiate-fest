@@ -88,6 +88,9 @@ export default function RegisterPage() {
                     Register for <span style={{ color: "var(--accent)", textShadow: "0 0 20px var(--accent)" }}>NEUROVEX 2K26</span>
                 </h1>
                 <p>Fill in the details below to secure your spot.</p>
+                <div style={{ marginTop: "16px", padding: "12px", background: "rgba(0, 212, 255, 0.06)", borderRadius: "8px", border: "1px solid rgba(0, 212, 255, 0.2)", display: "inline-block", textAlign: "left", fontSize: "0.9rem" }}>
+                    <strong style={{ color: "var(--accent)" }}>Note:</strong> Entry fee will be collected offline.
+                </div>
             </div>
 
             <div className="section" style={{ paddingTop: 0, maxWidth: "720px" }}>
