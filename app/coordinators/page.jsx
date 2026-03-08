@@ -4,13 +4,13 @@ export const metadata = {
 };
 
 const coordinators = [
-    { name: "Prof.Rekha Raichel", role: "Faculty Coordinator", department: "Head of Department, MCA", phone: "+91 9986344574" },
-    { name: "Prof.Thimmappa N.T", role: "Faculty In-charge", department: "Dept. of MCA", phone: "+91 7899999042" },
+    { name: "Prof.Rekha Raichal", role: "Faculty Coordinator", department: "Head of Department, MCA", phone: "+91 9986344574" },
+    { name: "Prof.Thimmappa N T", role: "Faculty In-charge", department: "Dept. of MCA", phone: "+91 7899999042" },
     { name: "Prof.Chirag D", role: "Faculty In-charge", department: "Dept. of MCA", phone: "+91 8310228857" },
     { name: "Sathyasimha H N", role: "Organizer", phone: "6360582689" },
     { name: "Sujith Kumar", role: "Organizer", phone: "8431576586" },
     { name: "Bhargav Sai P", role: "Organizer", phone: "8618252933" },
-    { name: "Saajan D", role: "Organizer", phone: "8904712928" },
+    { name: "Saajan D", role: "Organizer", phone: "+91 8904712928" },
     { name: "Syed Ayan", role: "Organizer", phone: "9353027996" },
 ];
 
