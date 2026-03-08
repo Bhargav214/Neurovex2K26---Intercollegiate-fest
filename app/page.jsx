@@ -168,7 +168,7 @@ export default function HomePage() {
             seats fill up.
           </p>
           <Link href="/register" className="btn btn-primary">
-            ⚡ Register for Free
+            ⚡ Register Now!
           </Link>
         </div>
       </section>
