@@ -80,6 +80,22 @@ export default function RegisterPage() {
     const teamSize = parseInt(form.teamSize, 10);
     const showTeamMembers = !isNaN(teamSize) && teamSize > 1;
 
+    // Determine max/min based on selected event
+    let minTeamSize = 1;
+    let maxTeamSize = 10;
+
+    if (selectedEvent) {
+        if (selectedEvent.slug === 'coding-debugging' || selectedEvent.slug === 'it-quiz' || selectedEvent.slug === 'it-debate') {
+            minTeamSize = 2; maxTeamSize = 2;
+        } else if (selectedEvent.slug === 'treasure-hunt' || selectedEvent.slug === 'it-gaming') {
+            minTeamSize = 4; maxTeamSize = 4;
+        } else if (selectedEvent.slug === 'logo-design' || selectedEvent.slug === 'it-manager') {
+            minTeamSize = 1; maxTeamSize = 1;
+        } else if (selectedEvent.slug === 'corporate-walk') {
+            minTeamSize = 6; maxTeamSize = 8;
+        }
+    }
+
     return (
         <div>
             <div className="page-header">
@@ -216,14 +232,25 @@ export default function RegisterPage() {
                                         id="teamSize"
                                         name="teamSize"
                                         type="number"
-                                        min="1"
-                                        max="10"
+                                        min={minTeamSize}
+                                        max={maxTeamSize}
                                         className="form-input"
-                                        placeholder="Number of members"
+                                        placeholder={selectedEvent ? `Allowed: ${minTeamSize}-${maxTeamSize} members` : "Number of members"}
                                         value={form.teamSize}
-                                        onChange={handleChange}
+                                        onChange={(e) => {
+                                            const val = e.target.value;
+                                            if (val === "" || /^[1-9]$/.test(val)) {
+                                                handleChange(e);
+                                            }
+                                        }}
                                         required
+                                        disabled={!selectedEvent}
                                     />
+                                    {!selectedEvent && (
+                                        <p style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "4px" }}>
+                                            Select an event first
+                                        </p>
+                                    )}
                                 </div>
                             </div>
 
