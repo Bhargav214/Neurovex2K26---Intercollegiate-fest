@@ -127,8 +127,15 @@ export default function RegisterPage() {
                                         className="form-input"
                                         placeholder="Enter your full name"
                                         value={form.name}
-                                        onChange={handleChange}
+                                        onChange={(e) => {
+                                            const val = e.target.value;
+                                            if (/^[a-zA-Z\s]*$/.test(val)) {
+                                                handleChange(e);
+                                            }
+                                        }}
                                         required
+                                        pattern="[A-Za-z\s]+"
+                                        title="Only alphabetic characters are allowed."
                                     />
                                 </div>
                                 <div className="form-group">
@@ -155,11 +162,17 @@ export default function RegisterPage() {
                                         name="phone"
                                         type="tel"
                                         className="form-input"
-                                        placeholder="+91 XXXXX XXXXX"
+                                        placeholder="10-digit number"
                                         value={form.phone}
-                                        onChange={handleChange}
+                                        onChange={(e) => {
+                                            const val = e.target.value;
+                                            if (/^\d{0,10}$/.test(val)) {
+                                                handleChange(e);
+                                            }
+                                        }}
                                         required
-                                        pattern="[0-9+\-\s]{10,15}"
+                                        pattern="\d{10}"
+                                        title="Please enter exactly 10 digits."
                                     />
                                 </div>
                                 <div className="form-group">

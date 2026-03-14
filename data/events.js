@@ -45,7 +45,6 @@ export const events = [
         description:
             "A high-octane quiz competition covering all dimensions of Information Technology — from computer science fundamentals and programming to emerging technologies like AI, cybersecurity, blockchain, and cloud computing.",
         rules: [
-            "Teams of 2 participants per college.",
             "No mobile phones or electronic devices during the quiz.",
             "Quiz Master's decision is final and binding.",
             "Negative marking applies in elimination rounds.",
