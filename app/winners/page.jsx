@@ -8,13 +8,14 @@ export const metadata = {
     description: "Congratulations to the winners of NEUROVEX 2K26 Intercollegiate IT Fest.",
 };
 
+import { getAllWinners } from "@/lib/sheets";
+
 async function getWinners() {
     try {
-        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-        const res = await fetch(`${baseUrl}/api/winners`, { cache: "no-store" });
-        if (!res.ok) return [];
-        return res.json();
-    } catch {
+        const winners = await getAllWinners();
+        return winners || [];
+    } catch (err) {
+        console.error("Failed to load winners:", err);
         return [];
     }
 }

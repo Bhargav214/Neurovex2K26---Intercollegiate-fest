@@ -2,8 +2,8 @@
 import { NextResponse } from "next/server";
 import { getAllWinners, addWinner } from "@/lib/sheets";
 import { verifyAdminToken, unauthorizedResponse } from "@/lib/auth";
-
 // Public: Get all winners
+export const dynamic = "force-dynamic";
 export async function GET() {
     try {
         const winners = await getAllWinners();
